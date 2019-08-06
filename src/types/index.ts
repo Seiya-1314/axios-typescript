@@ -1,3 +1,5 @@
+import { request } from "http";
+
 /**
  * 公用的类型定义
  */
@@ -19,10 +21,35 @@ export type method =
   | 'patch'
   | 'PATCH'
 
-/* request 接口类型定义 */
+/* request 请求类型接口定义 */
 export interface AxiosRequestConfig {
   url: string
   method?: method
   data?: any
   params?: any
+  headers?: any
+  responseType?: XMLHttpRequestResponseType
+  timeout?: number
+}
+
+/* response 响应类型接口定义 */
+export interface AxiosResponse {
+  data: any
+  status: number
+  statusText: string
+  headers: any
+  config: AxiosRequestConfig
+  request: any
+}
+
+/* axios 返回类型接口定义 */
+export interface AxiosPromise extends Promise<AxiosResponse> {}
+
+/* axios 增强错误类型接口定义 */
+export interface AxiosError extends Error {
+  config: AxiosRequestConfig
+  code?: string
+  request?: any
+  Response?: AxiosResponse
+  isAxiosError?: boolean
 }
