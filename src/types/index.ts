@@ -63,10 +63,27 @@ export interface Axios {
 
   post(url: string,data?: any, config?: AxiosRequestConfig): AxiosPromise
   put(url: string,data?: any, config?: AxiosRequestConfig): AxiosPromise
-  path(url: string,data?: any, config?: AxiosRequestConfig): AxiosPromise
+  patch(url: string,data?: any, config?: AxiosRequestConfig): AxiosPromise
 }
 
 /* 混合接口类型 */
 export interface AxiosInstance extends Axios {
   (config: AxiosRequestConfig): AxiosPromise
+  (url: string, config?: AxiosRequestConfig): AxiosPromise
+}
+
+
+/* 拦截器接口定义 */
+export interface AxiosInterceptorManager<T> {
+  use(resolve: ResolveFn<T>, reject: RejectFn): number
+
+  eject(id: number): void
+}
+
+export interface ResolveFn<T> {
+  (val: T): T | Promise<T>
+}
+
+export interface RejectFn {
+  (error: any): any
 }
