@@ -162,9 +162,32 @@ axios({
 
 - **非 200 状态码处理**
 
+<br>
+<br>
 
+### 扩展接口
 
+为了用户更加方便的使用 axios 发送请求 ，可以为所有支持请求方法扩展一些接口：
 
+- `axios.request(config)`
+
+- `axios.get(url, config)`
+
+- `axios.post(url[, data [, config ]])`
+
+- `axios.put(url[, data [, config ]])`
+
+- `axios.patch(url[, data [, config ]])`
+
+- `axios.delete(url[, config])`
+
+- `axios.head(url[, config])`
+
+- `axios.options(url[, config])`
+
+<br>
+
+使用这些方法，我们就不必在 config 中指定 url、method、data 这些属性了。
 
 
 <br>
